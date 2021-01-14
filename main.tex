@@ -4,7 +4,7 @@
 \newcommand{\company}{false}
 \newcommand{\ECE}{true}
 %%%%% Required Settings for the template %%%%%
-\input{ECEconfig.sty}
+\input{LaTeX/ECEconfig.sty}
 \usepackage{hyperref}
 
 \makeglossaries
@@ -26,16 +26,16 @@
 \addto\extrasngerman{\def\equationautorefname{Gleichung}}
 \addto\extrasngerman{\def\tableautorefname{Tabelle}}
 
-\input{Einheiten}
+\input{LaTeX/Einheiten}
 
 \begin{document}
-\input{frontmatter/glossaries}
+\input{LaTeX/frontmatter/glossaries}
 %frontmatter inluding:
 %titlepage, abstract, acknowledgments, declaration, toc, lof, lot
 \frontmatter
 \renewcommand{\thepage}{\Roman{page}}
 
-\input{frontmatter/titlepage}
+\input{LaTeX/frontmatter/titlepage}
 
 \tableofcontents
 \printglossary
@@ -52,7 +52,7 @@
     Fertig gestellt am \today \\
     \begin{figure}[H]
         \centering
-        \includegraphics{pics/signature_grebien.png}
+        \includegraphics{LaTeX/pics/signature_grebien.png}
     	\caption{Signatur: Grebien Alexander}
     	\label{pic:signatur_grebien}
     \end{figure}
