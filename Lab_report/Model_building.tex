@@ -60,13 +60,20 @@ The four base equations of the system have been derived from the sketch shown in
     \end{align}
 
 \subsection{Consequence for the placement of the battery}
-The first discussion point should revolve around what physically happens when the battery is placed lower, or higher on the balanbot. As the battery moves further from the axles center (note: the battery generates around xx\% of the balanbots mass), the moment of inertia increases too (\cite{enwiki:satz_von_steiner}). Also the center of gravity moves up the balanbot. 
+The first discussion point should revolve around what physically happens when the battery is placed lower, or higher on the balanbot. As the battery moves further from the axles center (note: the battery generates around xx\% of the balanbots mass), the moment of inertia increases too (\cite{enwiki:satz_von_steiner}). Also the center of gravity moves up the balanbot. This leads to a more unstable system, which means on the one hand, that the actors get more authority over the balanbot, but on the other, that the controller, needs to be tuned to a faster reaction time. One additional factor which lead to this decision was the less than ideal behaviors of the half bridge and the geared motors. 
+
+So after considering all these factors, the battery was placed on the lower possible position (\autoref{fig:lower_bat_pos}).
+
 \subsection{Model of the system}
-\subsubsection{Cart}
-
-\subsubsection{Pendulum}
-
+In this next step, the Model was transferred to Matlab Simulink and tested. For further used this was done using submodels. Which doesn't alter the results and conclusion which are derived of this simulation.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{}
+    \caption{Caption}
+    \label{fig:my_label}
+\end{figure}
 \section{Analysis of the System}
+
 \subsection{Linearization}
 
 
