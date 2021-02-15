@@ -68,14 +68,51 @@ So after considering all these factors, the battery was placed on the lower poss
 In this next step, the Model was transferred to Matlab Simulink and tested. For further used this was done using submodels. Which doesn't alter the results and conclusion which are derived of this simulation.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{}
-    \caption{Caption}
-    \label{fig:my_label}
+    \includegraphics[width=0.8\textwidth]{Lab_report/pics/modelBuilding/non_linearized_model.PNG}
+    \caption{Simulink Subsystem of non linearized model}
+    \label{fig:non_linearized_model}
 \end{figure}
-\section{Analysis of the System}
+\subsection{Analysis of the System}
+\subsubsection{theta = 0}
+The first part of analysis of our system was to test the behavior of the system when no Force is put on the cart and the pendulum is completely upright when starting.
 
-\subsection{Linearization}
+In the \grqq real world \grqq it would be expected, that the pendulum will begin to fall in a considerably small time (Maybe a few seconds of upright position). This may come from small air movements around the pendulum, an unprecise placement of the pendulum, or more relativistic effects (like brownian particle movement). 
 
+However since these before mentioned interferences weren't modeled in Simulink the pendulum should remain completely upright when simluting under these circumstances. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Lab_report/pics/plots/non_linearized_results_theta_0.eps}
+    \caption{Simulation results non-linearized model, $\Theta=0$}
+    \label{fig:sim_res_non_lin_t_0}
+\end{figure}
+
+As can be seen in \autoref{fig:sim_res_non_lin_t_0}, the model behaves exactly as expected. The pendulum remains upright and the cart is not moving. For that matter: Complete success
+
+\subsubsection{theta=5}
+The next step was to test the model with an initial angle of $\Theta=5^\circ$. In comparison to the last scenario now the pendulum should not remain upright, but should slowly begin to swing. Due to the simulated friction the amplitude of the swinging should decay by time.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics{Lab_report/pics/plots/non_linearized_results_theta_5.eps}
+    \caption{Simulation results non-linearized model, $\Theta=5^\circ$}
+    \label{fig:sim_res_non_lin_t_5}
+\end{figure}
+To make the amplitude decay even clearer, and to exclude all other causes of this decay, one more simulation was made. Now the factor for the friction was increased by a factor of 6, to result in $b=0.6$. All other parameters of the simulation remained the same. 
+\begin{figure}[H]
+    \centering
+    \includegraphics{Lab_report/pics/plots/non_linearized_results_inc_friction.eps}
+    \caption{Simulation results non-linearized model, $\Theta=5^\circ$}
+    \label{fig:sim_res_non_lin_t_5_inc_fric}
+\end{figure}
+The increased rate of decay can be observed very clearly in \autoref{fig:sim_res_non_lin_t_5_inc_fric}.
+\section{Linearization}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics{Lab_report/pics/plots/.eps}
+    \caption{Simulation results non-linearized model, $\Theta=5^\circ$}
+    \label{fig:sim_res_non_lin_t_5_inc_fric}
+\end{figure}
 
 
 \subsection{Comparison of linear vs. non-linear System}
