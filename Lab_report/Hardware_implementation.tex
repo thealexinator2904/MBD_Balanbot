@@ -1,0 +1,16 @@
+\section{Task Clarification}
+Until now a model was developed and with this model settings for a PID controller were found. To test these settings on the real BalanBot, a Simulink model is needed, which implements the hardware specific functions. This includes reading the acceleration and gyroscope sensors, filtering them and writing to the output registers. This ensures that the BalanBot also moves in a different direction with a negative output of the controller than with a positive output. 
+
+\section{Detailed Code Commentary}
+\subsection{Sensor Data Reading}
+\input{Lab_report/subTexs/sensor_data_reading}
+
+\subsection{Data Processing}
+In this submodel, the determined data is first filtered by means of a Kalman filter and then fed to the control algorithm. The data processing by means of this filter is described in more detail below.
+\subsubsection{Kalman filter}
+The principle of this filter is based on the estimation of the output quantity and the comparison of the measured output quantity. The difference of these two quantities is then weighted with the Kalman gain and used to correct the estimated output value. In our case the code for this estimation and correction algorithm is already finished and only a small test and proof of concept will be shown here. 
+
+
+\subsubsection{Controller}
+
+\subsection{Motor Control}
