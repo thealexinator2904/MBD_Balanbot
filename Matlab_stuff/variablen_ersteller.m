@@ -31,6 +31,17 @@ struct_res = sim('master', 60);
 hgexport(plot_non_linear(struct_res),'..\Lab_report\pics\plots\non_linearized_results_inc_friction.eps');
 b=0.1;
 
+%plot sine / cosine
+t = [0 : 0.00001: 2*pi];
+fig_cos_sin = figure
+plot(t.*180./pi, sin(t), 'b')
+hold on
+plot(t.*180./pi, cos(t), 'r')
+legend('sine', 'cosine')
+grid on
+xlabel('angle in deg')
+hgexport(fig_cos_sin,'..\Lab_report\pics\plots\sin_cos.eps');
+
 function [fig] = plot_non_linear(struct)
     fig = figure('Name', 'non Linear Model simulation results');
     subplot(2,1,1)
