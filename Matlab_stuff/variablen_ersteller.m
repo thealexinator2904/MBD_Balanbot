@@ -16,12 +16,14 @@ F=0;
 Theta_0=0;
 struct_res = sim('master', 60);
 hgexport(plot_non_linear(struct_res),'..\Lab_report\pics\plots\non_linearized_results_theta_0.eps');
+hgexport(plot_linear(struct_res),'..\Lab_report\pics\plots\linearized_results_theta_0.eps');
 
 %simulate with theta = 5 degrees
 F=0;
 Theta_0=5;
 struct_res = sim('master', 60);
 hgexport(plot_non_linear(struct_res),'..\Lab_report\pics\plots\non_linearized_results_theta_5.eps');
+hgexport(plot_linear(struct_res),'..\Lab_report\pics\plots\linearized_results_theta_5.eps');
 
 %simulate with theta = 5 degrees and increased friction
 F=0;
@@ -33,7 +35,7 @@ b=0.1;
 
 %plot sine / cosine
 t = [0 : 0.00001: 2*pi];
-fig_cos_sin = figure
+fig_cos_sin = figure;
 plot(t.*180./pi, sin(t), 'b')
 hold on
 plot(t.*180./pi, cos(t), 'r')
@@ -52,6 +54,21 @@ function [fig] = plot_non_linear(struct)
     
     subplot(2,1,2)
     plot(struct.logsout{2}.Values.Time, struct.logsout{2}.Values.Data);
+    ylabel('x in m')
+    xlabel('time in s')
+    grid on
+end
+
+function [fig] = plot_linear(struct)
+    fig = figure('Name', 'Linear Model simulation results');
+    subplot(2,1,1)
+    plot(struct.logsout{3}.Values.Time, struct.logsout{3}.Values.Data);
+    xlabel('time in s')
+    ylabel('theta in rad')
+    grid on
+    
+    subplot(2,1,2)
+    plot(struct.logsout{4}.Values.Time, struct.logsout{4}.Values.Data);
     ylabel('x in m')
     xlabel('time in s')
     grid on
