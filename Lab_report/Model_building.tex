@@ -93,31 +93,56 @@ The next step was to test the model with an initial angle of $\Theta=5^\circ$. I
 
 \begin{figure}[H]
     \centering
-    \includegraphics{Lab_report/pics/plots/non_linearized_results_theta_5.eps}
+    \includegraphics[width=0.8\textwidth]{Lab_report/pics/plots/non_linearized_results_theta_5.eps}
     \caption{Simulation results non-linearized model, $\Theta=5^\circ$}
     \label{fig:sim_res_non_lin_t_5}
 \end{figure}
 To make the amplitude decay even clearer, and to exclude all other causes of this decay, one more simulation was made. Now the factor for the friction was increased by a factor of 6, to result in $b=0.6$. All other parameters of the simulation remained the same. 
 \begin{figure}[H]
     \centering
-    \includegraphics{Lab_report/pics/plots/non_linearized_results_inc_friction.eps}
+    \includegraphics[width=0.8\textwidth]{Lab_report/pics/plots/non_linearized_results_inc_friction.eps}
     \caption{Simulation results non-linearized model, $\Theta=5^\circ$}
     \label{fig:sim_res_non_lin_t_5_inc_fric}
 \end{figure}
 The increased rate of decay can be observed very clearly in \autoref{fig:sim_res_non_lin_t_5_inc_fric}.
-\section{Linearization}
 
+\section{Linearization}
+To explain the step of Linearization our first step is to show which parts of our function are not linear. According to an general definition of Linearity, linearity describes the property of a system to always respond to a change in one parameter with a proportional change in another parameter (\cite{dewiki:Linearity}). This is not true for sine and cosine functions. These are not linear. Per se this isn't a problem, but it can make some future steps and simulations a lot easier if these function were replaced by a different expression.
+
+A general approach to linearising these functions is the development of a Taylor Polynom with varying degree (The higher the degree of the Polynome, the preciser the approximation). In our specific case we have the added bonus of only using very small angles. When looking closely at the course of the function (\autoref{fig:sine_cos}), it can be seen that the sine and cosine functions at very low angles can also be calculated without the development of a Taylor series (better: only using the first factor of the Taylor series) to estimate the value. The error resulting of this process will be discussed in a future chapter(see \autoref{ssection:Comparison_lin_non_lin}).
 \begin{figure}[H]
     \centering
-    \includegraphics{Lab_report/pics/plots/.eps}
-    \caption{Simulation results non-linearized model, $\Theta=5^\circ$}
-    \label{fig:sim_res_non_lin_t_5_inc_fric}
+    \includegraphics[width=0.8\textwidth]{Lab_report/pics/plots/sin_cos.eps}
+    \caption{plot of sine and cosine}
+    \label{fig:sine_cos}
 \end{figure}
+\subsection{Excursus Taylorseries}
+To further explain how the before mentioned non-linear functions can be replaced, the Taylor Series will be developed for both. The general definition of the Taylor Series is:
+\begin{equation}
+      T_{f(x;a)} = \sum^\infty_{n=0} \frac{f^{(n)}(a)}{n!}(x-a)^n
+    \label{eq:Taylor_Series}  
+\end{equation}
+\subsubsection{Sine Function}
+To get the corresponding values for the Linerization it was decided to get the developed Taylor series from a collection of formulas(\cite{papula2017mathematische}).
+\begin{align}
+    \sin \,(x)&=\sum _{n=0}^{\infty }(-1)^{n}{\frac {x^{2n+1}}{(2n+1)!}} \\
+    &=x-{\frac {x^{3}}{6}}+{\frac {x^{5}}{120}}-\cdots \cite[p. 187]{papula2017mathematische}
+\end{align}
+Since the development of the series stops at the first term, the linearized version of the $\sin(x)$ is $x$.
+\subsubsection{Cosine Funktion}
+\begin{align}
+    cos(x)&=\sum _{n=0}^{\infty }(-1)^{n}{\frac {x^{2n}}{(2n)!}}\\
+    &=1-{\frac {x^{2}}{2}}+{\frac {x^{4}}{24}}-\cdots  \cite[p. 187]{papula2017mathematische}
+\end{align}
 
+Since the development of the series stops at the first term, the linearized version of the $\cos(x)$ is $1$.
+\subsection{Simulink Model}
+The linearization of the before developed Matlab model is a fast and easy step. In that our case we just replaced the sine and cosine Blocks with the corresponding gains. 
 
-\subsection{Comparison of linear vs. non-linear System}
+\section{Comparison of linear vs. non-linear System}
+\label{ssection:Comparison_lin_non_lin}
 
-\subsection{System Analysis with Transfer Function}
+\section{System Analysis with Transfer Function}
 
 Open loop response with no offset
 Open loop response with initial condition $\Phi = 5^\circ$
