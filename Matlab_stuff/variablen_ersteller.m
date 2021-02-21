@@ -44,6 +44,43 @@ grid on
 xlabel('angle in deg')
 hgexport(fig_cos_sin,'..\Lab_report\pics\plots\sin_cos.eps');
 
+
+%controler plotting
+gain=1;
+struct_res = sim('controler_sim', 60);
+hgexport(plot_non_linear(struct_res),'..\Lab_report\pics\plots\non_linear_control_g1.eps');
+hgexport(plot_linear(struct_res),'..\Lab_report\pics\plots\linear_control_g1.eps');
+
+gain=5;
+struct_res = sim('controler_sim', 60);
+hgexport(plot_non_linear(struct_res),'..\Lab_report\pics\plots\non_linear_control_g5.eps');
+hgexport(plot_linear(struct_res),'..\Lab_report\pics\plots\linear_control_g5.eps');
+
+gain=10;
+struct_res = sim('controler_sim', 60);
+hgexport(plot_non_linear(struct_res),'..\Lab_report\pics\plots\non_linear_control_g10.eps');
+hgexport(plot_linear(struct_res),'..\Lab_report\pics\plots\linear_control_g10.eps');
+
+gain=15;
+struct_res = sim('controler_sim', 60);
+hgexport(plot_non_linear(struct_res),'..\Lab_report\pics\plots\non_linear_control_g15.eps');
+hgexport(plot_linear(struct_res),'..\Lab_report\pics\plots\linear_control_g15.eps');
+
+gain=20;
+struct_res = sim('controler_sim', 60);
+hgexport(plot_non_linear(struct_res),'..\Lab_report\pics\plots\non_linear_control_g20.eps');
+hgexport(plot_linear(struct_res),'..\Lab_report\pics\plots\linear_control_g20.eps');
+
+gain=22.5;
+struct_res = sim('controler_sim', 60);
+hgexport(plot_non_linear(struct_res),'..\Lab_report\pics\plots\non_linear_control_g22_5.eps');
+hgexport(plot_linear(struct_res),'..\Lab_report\pics\plots\linear_control_g22_5.eps');
+
+gain=25;
+struct_res = sim('controler_sim', 60);
+hgexport(plot_non_linear(struct_res),'..\Lab_report\pics\plots\non_linear_control_g22_5.eps');
+hgexport(plot_linear(struct_res),'..\Lab_report\pics\plots\linear_control_g22_5.eps');
+
 function [fig] = plot_non_linear(struct)
     fig = figure('Name', 'non Linear Model simulation results');
     subplot(2,1,1)
