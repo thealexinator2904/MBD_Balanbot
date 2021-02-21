@@ -1,7 +1,7 @@
 %Transfer Functions 
 s = tf('s');
 Pos_tf = (s^2*(J+m*l^2) - m*g*l) / (s^4*((M+m)*(J+m*l^2) - m^2 * l^2) + ...
-s^3*((J*b+m*l^2)*b) - s^2*(m*g*l*(M+m)) - s*(m*g*l*b));
+s^3*((J+m*l^2)*b) - s^2*(m*g*l*(M+m)) - s*(m*g*l*b));
 Ang_tf = -(s^2*m*l) / (s^4*((J+m*l^2)*(M+m)-m^2*l^2) + s^3*(b*(J+m*l^2)) - ...
 s^2*(m*g*l*(M+m)) - s*(b*m*g*l));
 
@@ -12,4 +12,13 @@ set(sys_tf,'InputName',inputs);
 set(sys_tf,'OutputName',outputs);
 sys_tf
 
+closed_loop = feedback(Ang_tf,1)
+
+pole(sys_tf)
+
 pzmap(sys_tf)
+grid on
+
+% pole(closed_loop)
+
+% pzmap(closed_loop)
