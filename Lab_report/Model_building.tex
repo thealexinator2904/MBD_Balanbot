@@ -17,7 +17,7 @@ The four base equations of the system have been derived from the sketch shown in
     \caption{Sketch of the Balanbot, forces included}
     \label{fig:forces}
 \end{figure}
-
+\newpage
     \begin{align}    \label{eq: base 1 (a)}
         a = \ddot{x} = \frac{\sum F}{m_{cart}} = \frac{F-F_x-F_r}{m_{cart}}
     \end{align}
@@ -58,12 +58,12 @@ The four base equations of the system have been derived from the sketch shown in
          \ddot{\Theta} I + m_{pendulum}l^2\ddot{\Theta} = m l cos(\Theta)\ddot{x} + m_{pendulum} g l sin(\Theta)\notag \\\cline{1-2}\notag \\
          \ddot{\Theta} = \frac{m_{pendulum}\cdot lcos(\Theta)\ddot{x}+m_{pendulum}\cdot glsin(\Theta)}{I+m_{pendulum}\cdot l^2}
     \end{align}
-
-\subsection{Model of the system}
+\newpage
+\subsection{Model of the System}
 In this next step, the Model was transferred to MatLab Simulink and tested. For further use this model was saved as a submodel.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{Lab_report/pics/modelBuilding/non_linearized_model.PNG}
+    \includegraphics[width=1.2\textwidth]{Lab_report/pics/modelBuilding/non_linearized_model.PNG}
     \caption{Simulink Subsystem of non linearized model}
     \label{fig:non_linearized_model}
 \end{figure}
@@ -72,9 +72,9 @@ In this next step, the Model was transferred to MatLab Simulink and tested. For 
 \subsubsection{theta = 0}
 The first part of analysis of our system was to test the behavior of the system when no force is put on the cart and the pendulum is completely upright when starting.
 
-In the ``real world`` it would be expected that the pendulum will begin to fall in a considerably small time (maybe a few seconds of upright position). This may come from small air movements around the pendulum, an unprecise placement of the pendulum, or more relativistic effects (like the Brownian particle movement). 
+In the ``real world`` it would be expected that the pendulum will begin to fall in a considerably small time (maybe a few seconds of upright position). This may come from small air movements around the pendulum, an imprecise placement of the pendulum, or more relativistic effects (like the Brownian particle movement). 
 
-However since these before mentioned interferences weren't modeled in Simulink the pendulum should remain completely upright when simluting under these circumstances. 
+However since these before mentioned interference weren't modeled in Simulink the pendulum should remain completely upright when simulating under these circumstances. 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{Lab_report/pics/plots/non_linearized_results_theta_0.eps}
@@ -135,6 +135,7 @@ Since the development of the series stops at the first term, the linearized vers
 \end{align}
 
 Since the development of the series stops at the first term, the linearized version of the $\cos(x)$ is $1$.
+\newpage
 \subsection{Simulink Model}
 The linearization of the before developed MatLab model is a fast and easy step. In that our case we just replaced the sine and cosine Blocks with the corresponding gains. 
 \begin{figure}[H]
@@ -166,8 +167,10 @@ As expected were the results of linearized system not as stable and in every cas
 Open loop response with no offset
 Open loop response with initial condition $\Theta = 5^\circ$
 \begin{align}\label{eq: 1}
-        
-    \end{align}
+        cos(\Theta)=cos(\phi+\pi)\xrightarrow{\phi\rightarrow0}-1\\
+        sin(\Theta)=cos(\phi+\pi)\xrightarrow{\phi\rightarrow0}-\phi\\
+        \dot{\Theta}=\frac{d(\phi+\pi)}{dt}=\dot{\phi}=0
+\end{align}
 
 \begin{align}\label{eq: 1}
         \RN{1}:\ddot{x} = [F+ml\ddot{\Theta}-y_{1}\dot{x}] \frac{1}{(M+m)}\\

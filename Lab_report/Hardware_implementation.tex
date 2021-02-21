@@ -29,7 +29,7 @@ The PID-Controller Submodel looks as can be seen in \autoref{fig:pid_model}.
 To 
 The angle limit was also implemented into the PID-Controller Submodel. If the angle of the BalanBot is bigger than $40^\circ$ or smaller than $-40^\circ$ , the output (= motor speed) gets set to 0RPM.
 \newline\\\\
-\textbf{Adjusting of the PID-Controller gains}\\
+\textbf{Adjusting of the PID-Controller gains}\\\\
 The settings of the PID controller had already been estimated by using the Simulink model beforehand. However, when testing these settings on the real BalanBot, the PID-Controller could not stabilize the BalanBot.\\\\
 To obtain some reasonable PID-Controller parameter values, all gains have been initially set to zero. Then, the proportional gain was estimated at first. To get rid of the steady-state-error, a integral gain was also estimated and implemented. However, the BalanBot reacted way too aggressive to faster errors, hence a derivative gain was estimated and implemented.\\\\
 The fine tuning of the controller was done in the following order:
