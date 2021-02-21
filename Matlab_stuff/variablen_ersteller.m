@@ -81,6 +81,10 @@ struct_res = sim('controler_sim', 60);
 hgexport(plot_non_linear(struct_res),'..\Lab_report\pics\plots\non_linear_control_g22_5.eps');
 hgexport(plot_linear(struct_res),'..\Lab_report\pics\plots\linear_control_g22_5.eps');
 
+struct_res = sim('controler_sim_pid', 0.5);
+hgexport(plot_non_linear(struct_res),'..\Lab_report\pics\plots\non_linear_pid.eps');
+hgexport(plot_linear(struct_res),'..\Lab_report\pics\plots\linear_pid.eps');
+
 function [fig] = plot_non_linear(struct)
     fig = figure('Name', 'non Linear Model simulation results');
     subplot(2,1,1)
