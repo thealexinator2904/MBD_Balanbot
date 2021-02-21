@@ -1,16 +1,43 @@
 \section{Task Clarification}
-Until now a model was developed and with this model settings for a PID controller were found. To test these settings on the real BalanBot, a Simulink model is needed, which implements the hardware specific functions. This includes reading the acceleration and gyroscope sensors, filtering them and writing to the output registers. This ensures that the BalanBot also moves in a different direction with a negative output of the controller than with a positive output. 
+Until now a model was developed and with this model settings for a PID controller were found. To test these settings on the real BalanBot, a Simulink model which implements the hardware specific functions is needed. This includes reading the acceleration and gyroscope sensors, filtering and processing them and writing to the output registers. This ensures that the BalanBot also moves in a different direction with a negative output of the controller than with a positive output. 
 
 \section{Detailed Code Commentary}
 \subsection{Sensor Data Reading}
 \input{Lab_report/subTexs/sensor_data_reading}
 
 \subsection{Data Processing}
-In this submodel, the determined data is first filtered by means of a Kalman filter and then fed to the control algorithm. The data processing by means of this filter is described in more detail below.
+In this submodel, the determined data is first filtered by a Kalman filter and then fed to the control algorithm. The data processing by means of this filter is described in more detail below.
 \subsubsection{Kalman filter}
 The principle of this filter is based on the estimation of the output quantity and the comparison of the measured output quantity. The difference of these two quantities is then weighted with the Kalman gain and used to correct the estimated output value. In our case the code for this estimation and correction algorithm is already finished and only a small test and proof of concept will be shown here. 
 
-
 \subsubsection{Controller}
+To control the BalanBot, a PID controller was implemented after the Kalman filter.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Lab_report/pics/hardware_impl/motor-control.PNG}
+    \caption{Model of the Motor Control}
+    \label{fig:motor control model}
+\end{figure}
 
+The PID-Controller Submodel looks as can be seen in \autoref{fig:pid_model}.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Lab_report/pics/hardware_impl/PID.PNG}
+    \caption{Model of the PID Controller}
+    \label{fig:pid_model}
+\end{figure}
+To 
+The angle limit was also implemented into the PID-Controller Submodel. If the angle of the BalanBot is bigger than $40^\circ$ or smaller than $-40^\circ$ , the output (= motor speed) gets set to 0RPM.
+\newline\\\\
+\textbf{Adjusting of the PID-Controller gains}\\
+The settings of the PID controller had already been estimated by using the Simulink model beforehand. However, when testing these settings on the real BalanBot, the PID-Controller could not stabilize the BalanBot.\\\\
+To obtain some reasonable PID-Controller parameter values, all gains have been initially set to zero. Then, the proportional gain was estimated at first. To get rid of the steady-state-error, a integral gain was also estimated and implemented. However, the BalanBot reacted way too aggressive to faster errors, hence a derivative gain was estimated and implemented.\\\\
+The fine tuning of the controller was done in the following order:
+\begin{itemize}
+    \item Adjusting the proportional gain until the outcome was somewhat nearly satisfactory
+    \item Adjusting the integral gain in combination with the proportional gain so the BalanBot would react fast enough but not too strong to errors
+    \item Adjusting the derivative gain to smooth the aggressiveness of the controller
+\end{itemize}
+
+The final PID-Controller gains can be seen in \autoref{fig:pid_model}.
 \subsection{Motor Control}
