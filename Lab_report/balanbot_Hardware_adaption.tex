@@ -1,24 +1,28 @@
-Due to lockdown restrictions and unavailable charging plugs, the existing battery of the Balanbot could not be used. Therefore, the Balanbot had to be converted to a 4S LiPo battery. The cable that supplies the motorshield also had to be changed. The battery can be fixed to the BalanBot in two different variants. However, this also leads to different behavior of the balancing offer. In the next chapter, these two options are compared and a decision is made.
+Due to lockdown restrictions and unavailable charging plugs, the existing battery of the Balanbot could not be used. Therefore, the Balanbot had to be converted to a 4S LiPo battery. The cable that supplies the motorshield also had to be changed. The battery can be fixed to the BalanBot in two different variants. However, this also leads to different behavior of the balancing offer. In the next chapter, these two options are compared and the decision gets explained.
 
 Furthermore, the new fixation of the cable can be seen in these pictures. Both the batteries and the cable are fixed with cable ties to the Balanbot.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{Lab_report/pics/hardware_adapt/bat_lower_pos.jpg}
-    \caption{Possible Battery position Nr. 1}
+    \caption{Possible battery position Nr. 1}
     \label{fig:lower_bat_pos}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{Lab_report/pics/hardware_adapt/bat_upper_pos.jpg}
-    \caption{Possible Battery position Nr. 2 }
+    \caption{Possible battery position Nr. 2 }
     \label{fig:upperlower_bat_pos}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{Lab_report/pics/hardware_adapt/cable.jpg}
-    \caption{cable attachment}
+    \caption{Cable attachment}
     \label{fig:cable}
 \end{figure}
 
+\subsection{Consequence for the placement of the battery}
+The first discussion point should revolve around what physically happens when the battery is placed lower, or higher on the BalanBot. As the battery moves further from the axis center, the moment of inertia increases too (\cite{enwiki:satz_von_steiner}). Also the center of gravity moves up the BalanBot. This leads to a more unstable system, which means on the one hand, that the actors get more authority over the BalanBot, but on the other, that the controller, needs to be tuned to a faster reaction time. One additional factor which lead to this decision was the less than ideal behaviors of the half bridge and the geared motors. 
+
+So after considering all these factors, the battery was placed on the lower possible position (\autoref{fig:lower_bat_pos}).
