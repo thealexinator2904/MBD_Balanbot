@@ -2,6 +2,13 @@
 In a first approach in controlling this system a proportional gain was installed. The gain will be used in further sections to find the parameters for a PID controller by using the Ziegler-Nichols method.
 
 The simulation was taken with different values for gain. All of the results are plotten in \autoref{fig:prop_gain_non_linearized}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{Lab_report/pics/modelBuilding/control_sim.PNG}
+    \caption{simulink model for simulating proportional control}
+    \label{fig:my_label}
+\end{figure}
 \begin{figure}[H]
     \centering
     \subfigure[$\text{gain }=1$]{\label{fig:prop_gain_non_linearized_g1}\includegraphics[width=0.49\textwidth]{Lab_report/pics/plots/non_linear_control_g1.eps}}
@@ -24,7 +31,7 @@ The simulation was taken with different values for gain. All of the results are 
 \begin{tabular}{|l|l|l|}
 \hline
 \rowcolor[HTML]{C0C0C0} 
-$k_p$ & $T_{osc} \text{in sec}$ & stable response (Y/N) \\ \hline
+$k_p$ & $T_{osc} \text{in sec}$ & stable response (Y/N) \\ \Xhline{1pt}
 1     & $1.754$                 & N                     \\ \hline
 5     & $1.390$                 & N                     \\ \hline
 10    & $1.195$                 & N                     \\ \hline
